@@ -1,8 +1,10 @@
 import { Box, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import Announcement from './Announcement/Announcement';
+import Homedashboard from './home/Homedashboard.jsx';
 import Profile from './Profile';
 import SidebarWithHeader from './SidebarWithHeader.tsx';
+import Userdashboard from './User/Userdashboard';
 
 
 function Dashboard() {
@@ -16,7 +18,9 @@ function Dashboard() {
           p={0}
           m={0}>
           {/* <Profile /> */}
-          <Announcement />
+          {/* <Announcement /> */}
+          {/* <Homedashboard /> */}
+          <Userdashboard />
         </Box>
       </SidebarWithHeader>
     </>

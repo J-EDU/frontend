@@ -1,5 +1,4 @@
 import React from 'react';
-// import { SmallCloseIcon } from "@chakra-ui/icons";
 import {
   Button,
   Flex,
@@ -31,7 +30,6 @@ function Profile() {
       <Stack direction={{ base: "column", md: "row" }}>
         <Box
           display={"flex"}
-        //   w={"100%"}
           align={"center"}
           justify={"center"}
           paddingTop={0}
