@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react";
 
 export const useTableSearch = async ({ searchVal, retrieve }) => {
+
   const [filteredData, setFilteredData] = useState([]);
   const [origData, setOrigData] = useState([]);
   const [searchIndex, setSearchIndex] = useState([]);
-    const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
     const crawl = (user, allValues) => {
       if (!allValues) allValues = [];
       for (var key in user) {
-        if (typeof user[key] === "object") crawl(user[key], allValues);
+        if (typeof user[key] === "object") crawl(user[key],
+          allValues);
         else allValues.push(user[key] + " ");
       }
       return allValues;
     };
     const fetchData = async () => {
-        const users = retrieve();
+      const { data: users } = await retrieve();
       setOrigData(users);
       setFilteredData(users);
       const searchInd = users.map(user => {
@@ -29,12 +30,13 @@ export const useTableSearch = async ({ searchVal, retrieve }) => {
       if (users) setLoading(false);
     };
     fetchData();
-  }, [filteredData]);
+  }, [retrieve]);
 
   useEffect(() => {
     if (searchVal) {
       const reqData = searchIndex.map((user, index) => {
-        if (user.allValues.toLowerCase().indexOf(searchVal.toLowerCase()) >= 0)
+        if (user.allValues.toLowerCase().indexOf
+          (searchVal.toLowerCase()) >= 0)
           return origData[index];
         return null;
       });
@@ -46,6 +48,6 @@ export const useTableSearch = async ({ searchVal, retrieve }) => {
       );
     } else setFilteredData(origData);
   }, [searchVal, origData, searchIndex]);
-
   return { filteredData, loading };
 };
+
