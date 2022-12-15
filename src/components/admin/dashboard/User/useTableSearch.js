@@ -1,7 +1,9 @@
+import { Flex, Text } from "@chakra-ui/react";
+import { Avatar } from "antd";
 import { useState, useEffect } from "react";
 
-export const useTableSearch = async ({ searchVal, retrieve }) => {
-
+export const useTableSearch = ({ searchVal, retrieve }) => {
+  
   const [filteredData, setFilteredData] = useState([]);
   const [origData, setOrigData] = useState([]);
   const [searchIndex, setSearchIndex] = useState([]);
@@ -12,32 +14,33 @@ export const useTableSearch = async ({ searchVal, retrieve }) => {
     const crawl = (user, allValues) => {
       if (!allValues) allValues = [];
       for (var key in user) {
-        if (typeof user[key] === "object") crawl(user[key],
-          allValues);
-        else allValues.push(user[key] + " ");
+        if (typeof user[key] === "object") crawl(user[key], allValues);
+        else {
+          allValues.push( user[key] + " ");}
       }
       return allValues;
     };
+    
     const fetchData = async () => {
-      const { data: users } = await retrieve();
-      setOrigData(users);
-      setFilteredData(users);
+      let { data: users } = await retrieve();
       const searchInd = users.map(user => {
         const allValues = crawl(user);
-        return { allValues: allValues.toString() };
+        return { allValues: allValues.toString()  };
       });
+      setOrigData(users);
+      setFilteredData(users);
       setSearchIndex(searchInd);
       if (users) setLoading(false);
     };
+
     fetchData();
   }, [retrieve]);
 
   useEffect(() => {
     if (searchVal) {
       const reqData = searchIndex.map((user, index) => {
-        if (user.allValues.toLowerCase().indexOf
-          (searchVal.toLowerCase()) >= 0)
-          return origData[index];
+        if (user.allValues.toLowerCase().indexOf(searchVal.toLowerCase()) >= 0)
+          return ( origData[index]);
         return null;
       });
       setFilteredData(
@@ -48,6 +51,6 @@ export const useTableSearch = async ({ searchVal, retrieve }) => {
       );
     } else setFilteredData(origData);
   }, [searchVal, origData, searchIndex]);
+
   return { filteredData, loading };
 };
-
