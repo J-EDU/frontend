@@ -1,71 +1,61 @@
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
-import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, HStack, Stack, StackDivider, Text } from '@chakra-ui/react';
-import React, { useState } from 'react'
+import { Box, Button, Card, CardBody ,HStack, Stack, StackDivider, Text, useToast } from '@chakra-ui/react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 const AnnouncementList = () => {
-    const [fakeData, setFakeData] = useState([
+  const [announcement, setAnnouncement] = useState([]);
+  
+     const toast = useToast();
+
+
+  const deleteannoun = async (item) => {
+    
+    axios.delete(
+      `${process.env.REACT_APP_LOCAL}/announcement/deleteannouncement/${item.id}`,
       {
-        id: 1,
-        userID: 2,
-        text: "this is Text",
-        URL: "https://github.com/J-EDU/J-EDU-Server/blob/main/src/models/announcement.model.js",
-        cloudinary_id: `https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671487200&v=beta&t=wKAhidSPz_uuksWlQ_Eb3CF4V0tH3mJ5C0gpf6oBlvU`,
-      },
-      {
-        id: 1,
-        userID: 2,
-        text: "this is Text",
-        URL: "https://github.com/J-EDU/J-EDU-Server/blob/main/src/models/announcement.model.js",
-        cloudinary_id: `https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671487200&v=beta&t=wKAhidSPz_uuksWlQ_Eb3CF4V0tH3mJ5C0gpf6oBlvU`,
-      },
-      {
-        id: 1,
-        userID: 2,
-        text: "this is Text",
-        URL: "https://github.com/J-EDU/J-EDU-Server/blob/main/src/models/announcement.model.js",
-        cloudinary_id: `https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671487200&v=beta&t=wKAhidSPz_uuksWlQ_Eb3CF4V0tH3mJ5C0gpf6oBlvU`,
-      },
-      {
-        id: 1,
-        userID: 2,
-        text: "this is Text",
-        URL: "https://github.com/J-EDU/J-EDU-Server/blob/main/src/models/announcement.model.js",
-        cloudinary_id: `https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671487200&v=beta&t=wKAhidSPz_uuksWlQ_Eb3CF4V0tH3mJ5C0gpf6oBlvU`,
-      },
-      {
-        id: 1,
-        userID: 2,
-        text: "this is Text",
-        URL: "https://github.com/J-EDU/J-EDU-Server/blob/main/src/models/announcement.model.js",
-        cloudinary_id: `https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671487200&v=beta&t=wKAhidSPz_uuksWlQ_Eb3CF4V0tH3mJ5C0gpf6oBlvU`,
-      },
-      {
-        id: 1,
-        userID: 2,
-        text: "this is Text",
-        URL: "https://github.com/J-EDU/J-EDU-Server/blob/main/src/models/announcement.model.js",
-        cloudinary_id: `https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671487200&v=beta&t=wKAhidSPz_uuksWlQ_Eb3CF4V0tH3mJ5C0gpf6oBlvU`,
-      },
-      {
-        id: 2,
-        userID: 2,
-        text: "this is Text",
-        URL: "https://github.com/J-EDU/J-EDU-Server/blob/main/src/models/announcement.model.js",
-        cloudinary_id: `https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671487200&v=beta&t=wKAhidSPz_uuksWlQ_Eb3CF4V0tH3mJ5C0gpf6oBlvU`,
-      },
-      {
-        id: 3,
-        userID: 3,
-        text: "this is Text",
-        URL: "https://github.com/J-EDU/J-EDU-Server/blob/main/src/models/announcement.model.js",
-        cloudinary_id: `https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671487200&v=beta&t=wKAhidSPz_uuksWlQ_Eb3CF4V0tH3mJ5C0gpf6oBlvU`,
-      },
-    ]);
+        headers: { Authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
+      }
+    ).then(reslt => {
+      toast({
+        title: "delete.",
+        description: "Done ",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    }).catch(err => {
+      toast({
+        title: "Error ",
+        description: "Something went Wrong",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    })
+    fetchData()
+  }
+
+   const fetchData = async () => {
+     let { data } = await axios.get(
+       `${process.env.REACT_APP_LOCAL}/announcement/`,
+       {
+         headers: { Authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
+       }
+     );
+     var Localdata = data.files;
+     setAnnouncement(Localdata);
+   };
+
+   useEffect(() => {
+     fetchData();
+   });
+  
 
     return (
       <>
-        {fakeData.length !== 0 &&
-          fakeData.map((item) => (
+        {announcement.length !== 0 &&
+          announcement.map((item) => (
             <Card
               direction={{ base: "column", sm: "row" }}
               overflow="hidden"
@@ -76,20 +66,21 @@ const AnnouncementList = () => {
               <CardBody>
                 <HStack justifyContent={"space-between"}>
                   <Text py="1" marginBottom={1} color={"white"} noOfLines={1}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae minima laborum alias exercitationem 
+{item.text}
                   </Text>
                   <HStack>
-                    <Button
+                    {/* <Button
                       leftIcon={<EditIcon />}
                       colorScheme="green"
                       variant="solid"
                     >
                       Edit
-                    </Button>
+                    </Button> */}
                     <Button
                       leftIcon={<DeleteIcon />}
                       colorScheme="red"
                       variant="solid"
+                      onClick={()=> deleteannoun(item)}
                     >
                       Delete
                     </Button>

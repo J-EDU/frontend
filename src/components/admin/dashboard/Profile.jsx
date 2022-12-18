@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Flex,
@@ -22,31 +22,48 @@ import {
   Wrap,
 } from "@chakra-ui/react";
 import { BiBlock } from "react-icons/bi";
+import { useLocation, Navigate } from "react-router-dom";
+
+
 
 
 function Profile() {
+  const location = useLocation();
+  const [user,setUser]  = useState({})
+  
+  useEffect(() => {
+    const data = location.state;
+    setUser(data)
+  })
+
   return (
     <>
       <Stack direction={{ base: "column", md: "row" }}>
-        <Box
-          display={"flex"}
-          align={"center"}
-          justify={"center"}
-          paddingTop={0}
-          paddingLeft={2}
-        >
-          <SocialProfileSimple />
-        </Box>
-        <Box
-          display={"flex"}
-          align={"center"}
-          justify={"center"}
-          w={"100%"}
-          marginLeft={1}
-          paddingLeft={1}
-        >
-          <UserProfileEdit />
-        </Box>
+        {!user ? (
+          <Navigate to="/users" />
+        ) : (
+          <>
+            <Box
+              display={"flex"}
+              align={"center"}
+              justify={"center"}
+              paddingTop={0}
+              paddingLeft={2}
+            >
+              <SocialProfileSimple user={user} />
+            </Box>
+            <Box
+              display={"flex"}
+              align={"center"}
+              justify={"center"}
+              w={"100%"}
+              marginLeft={1}
+              paddingLeft={1}
+            >
+              <UserProfileEdit user={user} />
+            </Box>
+          </>
+        )}
       </Stack>
     </>
   );
@@ -55,7 +72,7 @@ function Profile() {
 export default Profile; 
 
 
-export function SocialProfileSimple() {
+export function SocialProfileSimple({user}) {
 
     let isAdmin = true;
 
@@ -72,8 +89,8 @@ export function SocialProfileSimple() {
       >
         <Avatar
           size={"xl"}
-          src={`https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671454800&v=beta&t=kKy9ADwYuwfQS6fNSBAzq3H4LJ8EpKL6pD6-MoLBJxE`}
-          alt={"Avatar Alt"}
+          src={`${user.URL}`}
+          alt={`${user.fullName}`}
           mb={4}
           pos={"relative"}
           _after={{
@@ -89,10 +106,10 @@ export function SocialProfileSimple() {
           }}
         />
         <Heading fontSize={"2xl"} fontFamily={"body"}>
-          Pro.Hasan
+          {user.fullName}
         </Heading>
         <Text fontWeight={600} color={"gray.500"} mb={4}>
-          @hasan
+          {user.email}{" "}
         </Text>
         <Text
           textAlign={"center"}
@@ -188,12 +205,7 @@ export function SocialProfileSimple() {
         </Stack> */}
         <Heading size="md">ABOUT</Heading>
         <Divider />
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
-          mollitia quisquam libero sapiente. Saepe voluptate porro provident id
-          possimus deserunt aliquid at repellendus ab nemo inventore, deleniti
-          odit cum. Vel.
-        </Text>
+        <Text>{user.about}</Text>
 
         {isAdmin && (
           <>
@@ -251,7 +263,7 @@ export function SocialProfileSimple() {
   );
 }
 
-export function UserProfileEdit() {
+export function UserProfileEdit({user}) {
      let [value, setValue] = React.useState("");
 
      let handleInputChange = (e) => {
@@ -279,10 +291,7 @@ export function UserProfileEdit() {
           <FormLabel>User Icon</FormLabel>
           <Stack direction={["column", "row"]} spacing={6}>
             <Center>
-              <Avatar
-                size="xl"
-                src={`https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671454800&v=beta&t=kKy9ADwYuwfQS6fNSBAzq3H4LJ8EpKL6pD6-MoLBJxE`}
-              >
+              <Avatar size="xl" src={`${user.URL}`}>
                 <AvatarBadge
                   as={IconButton}
                   size="sm"
@@ -308,6 +317,7 @@ export function UserProfileEdit() {
               //   width={"px"}
               _placeholder={{ color: "gray.500" }}
               type="text"
+              value={user.fullName}
             />
           </FormControl>
           <FormControl id="email" isRequired>
@@ -316,6 +326,7 @@ export function UserProfileEdit() {
               placeholder="your-email@example.com"
               _placeholder={{ color: "gray.500" }}
               type="email"
+              value={user.email}
             />
           </FormControl>
         </Stack>
@@ -332,10 +343,10 @@ export function UserProfileEdit() {
         <FormControl id="aboutControl" isRequired>
           <FormLabel>About</FormLabel>
           <Textarea
-            value={value}
             onChange={handleInputChange}
             placeholder="About"
             size="sm"
+            value={user.about}
           />
         </FormControl>
         <Stack spacing={6}>

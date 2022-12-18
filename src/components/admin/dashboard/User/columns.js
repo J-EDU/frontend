@@ -1,5 +1,11 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { Avatar } from "antd";
+import { Link } from "react-router-dom";
+import Profile from "../Profile";
+
+
+
+
 
 export const userColumns = [
    
@@ -12,7 +18,7 @@ export const userColumns = [
                 <Avatar
                     name={record.fullName}
                     key={record.id}
-                    src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrv1zN5J8Tn3NKIDIbDQoNmImdP5SlZ8FZDA&usqp=CAU`}
+                    src={record.URL}
                     size="sm"
                     mr="6"
                 />
@@ -107,10 +113,15 @@ export const userColumns = [
         title: "Profile",
         dataIndex: "profile",
         key: "profile",
-        render: (text, record) => (
-            <Button onClick={() => console.log(record)} >
-                {"View"}
-            </Button>
-        ),
-    }
+        render: (text, record) => {
+          return(
+                <Link to="/Profile" state={record} >
+                    <Button >
+                        {"View"}
+                    </Button>
+                </Link>
+           
+            )
+        }
+    },
 ];
