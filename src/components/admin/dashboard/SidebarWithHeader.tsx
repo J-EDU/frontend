@@ -45,7 +45,7 @@ interface LinkItemProps {
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
+  { name: 'Home', icon: FiHome }, 
   { name: 'Users', icon: FiUsers },
   { name: 'Announcements', icon: TfiAnnouncement },
   { name: 'Reports', icon: MdOutlineReport },
@@ -139,7 +139,7 @@ interface NavItemProps extends FlexProps {
 }
  const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (
-    <Link to={`${children}`}  >
+    <Link to={`/dashboard/${children}`}  >
       <Flex
         align="center"
         p="4"

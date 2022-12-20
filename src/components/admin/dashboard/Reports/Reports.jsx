@@ -15,7 +15,8 @@ import Swal from "sweetalert2";
 
 const Reports = () => {
   const [data, setData] = useState([]);
- const toast = useToast();
+  const toast = useToast();
+  
   const fetchData = async () => {
     let { data } = await axios.get(`${process.env.REACT_APP_LOCAL}/report/`, {
       headers: { Authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },

@@ -42,21 +42,21 @@ function Dashboard() {
           m={0}
         >
           <Routes>
-            <Route exact path="/" element={<Homedashboard />}></Route>
-            <Route exact path="/Home" element={<Homedashboard />}></Route>
+            <Route exact path="/dashboard" element={<Homedashboard />}></Route>
+            <Route exact path="/dashboard/Home" element={<Homedashboard />}></Route>
             <Route
               exact
-              path="/Announcements"
+              path="/dashboard/Announcements"
               element={<Announcement />}
             ></Route>
-            <Route exact path="/feedback" element={<Feedback />}></Route>
-            <Route exact path="/Reports" element={<Reports />}></Route>
+            <Route exact path="/dashboard/feedback" element={<Feedback />}></Route>
+            <Route exact path="/dashboard/Reports" element={<Reports />}></Route>
             <Route
               exact
               path="/Profile"
               element={<Profile user={user} />}
             ></Route>
-            <Route exact path="/Users" element={<Userdashboard />}></Route>
+            <Route exact path="/dashboard/Users" element={<Userdashboard />}></Route>
           </Routes>
         </Box>
       </SidebarWithHeader>
