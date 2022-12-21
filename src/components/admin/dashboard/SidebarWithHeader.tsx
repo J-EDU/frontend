@@ -1,4 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
+import cookies from "react-cookies";
+
 import {
   IconButton,
   Avatar,
@@ -39,6 +41,7 @@ import {
 import { Image } from '@chakra-ui/react';
 import { ReactText } from 'react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
+import { UserState } from './Context/UserContext';
 
 interface LinkItemProps {
   name: string;
@@ -172,6 +175,7 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -238,7 +242,13 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               >Profile</MenuItem>
               {/* <MenuItem>Settings</MenuItem> */}
               <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
+              <MenuItem
+              onClick={()=>{
+                cookies.remove("token")
+                cookies.remove("user")
+                window.location.href = window.location.origin + "/"  
+              }}
+              >Sign out</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

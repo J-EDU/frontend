@@ -5,7 +5,7 @@ import { AiFillLinkedin } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { IconContext } from 'react-icons';
 import { FaLinkedinIn } from "react-icons/fa";
-import aboutimage from '../../assesst/aboutus.png';
+import aboutimage from '../../../assesst/aboutus.png';
 
 class AboutUs extends Component {
     render() {

@@ -13,7 +13,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
- import logos from "../../assesst/logoo.png";
+ import logos from "../../../assesst/logoo.png";
 
 const Logo = (props) => {
   return <Image src={logos}  alt={"Imge Not Found"} mr={200}  mt={-30} width={70} />;

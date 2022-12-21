@@ -1,8 +1,10 @@
 import {
-  Box,
-  Flex,
-  Text,
   IconButton,
+  Avatar,
+  Box,
+  CloseButton,
+  Flex,
+  VStack,
   Button,
   Stack,
   Collapse,
@@ -11,13 +13,18 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  useColorModeValue,
-  useBreakpointValue,
-  Input,
-  useDisclosure,
   Image,
-} from "@chakra-ui/react";
-
+  HStack,
+  MenuList,
+  useColorModeValue,
+  Text,
+  useDisclosure,
+  Menu,
+  AvatarBadge,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+} from '@chakra-ui/react';
 import cookies from "react-cookies";
 
 import {
@@ -27,7 +34,8 @@ import {
   ChevronRightIcon,
   Search2Icon,
 } from "@chakra-ui/icons";
-import logos from "../../assesst/logoo.png";
+import logos from "../../../assesst/logoo.png";
+import { FiChevronDown } from "react-icons/fi";
 
 const Logo = (props) => {
   return <Image src={logos} w={"60px"} alt={"Imge Not Found"} ml={50} />;
@@ -108,17 +116,65 @@ export default function WithSubnavigation() {
               </Button>
             </Stack>
           ) : (
-            <Stack
-              flex={{ base: 1, md: 0 }}
-              justify={"flex-end"}
-              direction={"row"}
-              spacing={6}
-            >
-              <p>
-                {cookies.load("user").charAt(0).toUpperCase() +
-                  cookies.load("user").slice(1)}
-              </p>
-            </Stack>
+            <HStack spacing={{ base: '0', md: '6' }}>
+        <Flex alignItems={'center'}>
+          <Menu>
+            <MenuButton
+              py={2}
+              transition="all 0.3s"
+              _focus={{ boxShadow: 'none' }}>
+              <HStack>
+                <Avatar
+                 src={`https://media.licdn.com/dms/image/D4E35AQGcDBZVWgtTfg/profile-framedphoto-shrink_200_200/0/1670516792495?e=1671454800&v=beta&t=kKy9ADwYuwfQS6fNSBAzq3H4LJ8EpKL6pD6-MoLBJxE`}
+                >
+               <AvatarBadge boxSize='1.25em' bg='green.500' />
+                </Avatar>
+                
+               
+                <VStack
+                  display={{ base: 'none', md: 'flex' }}
+                  alignItems="flex-start"
+                  spacing="1px"
+                  ml="2">
+                  <Text fontSize="sm">{cookies.load("user").charAt(0).toUpperCase() +
+                   cookies.load("user").slice(1)}</Text>
+                  <Text fontSize="xs" color="gray.600">
+                    User
+                  </Text>
+                </VStack>
+                <Box display={{ base: 'none', md: 'flex' }}>
+                  <FiChevronDown />
+                </Box>
+              </HStack>
+            </MenuButton>
+            <MenuList
+              bg={'white'}
+              borderColor={'gray.200'}>
+              
+              {/* <MenuItem>Settings</MenuItem> */}
+              <MenuDivider />
+              <MenuItem
+              onClick={()=>{
+                cookies.remove("token")
+                cookies.remove("user")
+                window.location.href = window.location.origin + "/"  
+              }}
+              >Sign out</MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
+      </HStack>
+            // <Stack
+            //   flex={{ base: 1, md: 0 }}
+            //   justify={"flex-end"}
+            //   direction={"row"}
+            //   spacing={6}
+            // >
+            //   <p>
+            //     {cookies.load("user").charAt(0).toUpperCase() +
+            //       cookies.load("user").slice(1)}
+            //   </p>
+            // </Stack>
           )}
         </Flex>
       </Flex>

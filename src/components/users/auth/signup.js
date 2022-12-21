@@ -24,8 +24,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import logo from "../../assesst/jedu.PNG";
-import img from "../../assesst/signup.jpg"
+import img from "../../../assesst/signup.jpg"
 
 const initialStateData = {
   fullName: "",

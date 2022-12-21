@@ -1,5 +1,5 @@
 import React from "react";
-import brain from "../../assesst/new.png";
+import brain from "../../../assesst/new.png";
 import CaptionCarousel from "./announ.js";
 import {
   Box,

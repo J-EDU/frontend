@@ -3,7 +3,7 @@ import React from "react";
 
 import axios from "axios";
 import cookies from "react-cookies";
-import feedbackimage from "../../assesst/f.png";
+import feedbackimage from "../../../assesst/f.png";
 import {
   useToast,
   Flex,

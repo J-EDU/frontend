@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cookies from "react-cookies";
 import axios from 'axios';
 import base64 from "base-64";
-import Photo from "../../assesst/backcolor.jpg";
-import img from '../../assesst/signin1.png'
+import img from '../../../assesst/signin1.png'
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { Link } from "react-router-dom";
+
 import {
 	Flex,
 	useToast,
@@ -23,8 +24,8 @@ import {
     Stack,
     HStack,
     Checkbox,
-    Link,
 } from '@chakra-ui/react';
+import { UserState } from '../../admin/dashboard/Context/UserContext';
 
 const initialStateData = {
 	email: "",
@@ -35,6 +36,12 @@ const initialStateData = {
 export default function Signin2() {
 
 	const toast = useToast();
+	const { setisAdmin } = UserState();
+
+	useEffect(()=>{
+		setisAdmin(false)
+	})
+
 
     const [showPassword, setShowPassword] = useState(false);
 	const [data, setData] = useState(initialStateData)
@@ -70,9 +77,21 @@ export default function Signin2() {
 			  })
       cookies.save("token", response.data.user.token)
 	  cookies.save("user", response.data.user.fullName)
-	  if (response){
-		window.location.href = window.location.origin + "/"
+	  if(response.data.user.role =="admin"){
+		console.log(response.data.user.role)
+		setisAdmin(true)
+	}else{
+		console.log("not admin")
+		setisAdmin(false)
 	  }
+	//   cookies.save("role", response.data.user.role)
+
+	  if (response.data.user.role =="admin"){
+		<Link to={"/dashboard"} />
+		// window.location.href = window.location.origin + "/dashboard"
+	}else{
+		 window.location.href = window.location.origin + "/"
+	}
     })
 		// cookies.save('token', res.data.token)
 	}

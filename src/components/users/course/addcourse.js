@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cookies from "react-cookies";
-import addcourse2 from "../../assesst/addcouses.png";
+import addcourse2 from "../../../assesst/addcouses.png";
 
 import {
   Flex,
