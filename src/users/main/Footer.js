@@ -16,7 +16,7 @@ import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
  import logos from "../../assesst/logoo.png";
 
 const Logo = (props) => {
-  return <Image src={logos}  alt={"Imge Not Found"} mr={100} ml={-10} mt={-30} width={70} />;
+  return <Image src={logos}  alt={"Imge Not Found"} mr={200}  mt={-30} width={70} />;
 };
 
 const SocialButton = ({ children, label, href }) => {

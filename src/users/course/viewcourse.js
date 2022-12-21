@@ -64,7 +64,10 @@ export default function ViewCourse() {
 
   return (
     <Flex>
+
+
       <VStack w="100%" align="center" p="20px">
+      <Heading color="rgb(8, 58, 169)" textAlign={"center"}>Courses</Heading>
         <Grid templateColumns="repeat(5, 1fr)" gap={6}>
           {data.length >= 0 &&
             data.map((val, idx) => (
@@ -105,11 +108,11 @@ export default function ViewCourse() {
                         setDisplayModal(true);
                       }}
                       _hover={{
-                        bg: "pink.600"}}
+                        bg: "blue.600"}}
                       w="100%"
                       textAlign={"center"}
-                      bg={"#805ad5"}
-                      textColor={"white"}
+                      bg={"rgb(8, 58, 169)"}
+                      textColor={"#FFE7CC"}
 
                     >
                       Add video
@@ -180,8 +183,8 @@ const ViewCourseModal = ({ setDisplayModal, courseID }) => {
   return (
     <Modal isOpen={true} >
       <ModalOverlay />
-      <ModalContent bg='#f3ebff'>
-        <ModalHeader color={'#805ad5'}>Add Video</ModalHeader>
+      <ModalContent bg='#FEFCF3'>
+        <ModalHeader color={'#083AA9'}>Add Video</ModalHeader>
         <ModalBody>
           <Flex w="100%" gap="24px" direction={"column"}>
             <Flex w="100%" gap="8px" direction={"column"}>
@@ -223,13 +226,13 @@ const ViewCourseModal = ({ setDisplayModal, courseID }) => {
         <ModalFooter>
           <Button 
           color='white'
-           bg={"#805ad5"}
+           bg={"#083AA9"}
            _hover={{
-            bg: "pink.600"}}
+            bg: "blue.600"}}
           onClick={handleSubmit}>Save</Button>
           <Button
           _hover={{
-            bg: "pink.600",
+            bg: "blue.600",
             color:'white'
           }}
             variant="ghost"

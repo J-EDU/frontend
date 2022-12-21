@@ -101,7 +101,7 @@ export default function WithSubnavigation() {
                 fontSize={"sm"}
                 fontWeight={600}
                 color={"white"}
-                colorScheme="purple" 
+                bg="rgb(8, 58, 169)"      
                 href={"/signup"}        
               >
                 Sign Up

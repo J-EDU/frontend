@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cookies from "react-cookies";
-import addcourse2 from "../../assesst/addcourse2.png";
+import addcourse2 from "../../assesst/addcouses.png";
 
 import {
   Flex,
@@ -81,7 +81,7 @@ function AddCourse() {
         <Box
         // position={"absolute"}
           top="20vh"
-          bg="#805ad5"
+          bg="#083AA9"
           color="#0B0E3F"
           borderRadius="lg"
           objectFit={"cover"}
@@ -94,21 +94,21 @@ function AddCourse() {
               <WrapItem>
                 <Box >
                   <Stack mt='5'>
-                  <Heading color={"white"} >Add Course</Heading>
+                  <Heading color={"#FFE7CC"} >Add Course</Heading>
                   </Stack>
-                  <Text fontSize='xl'>
+                  <Text mt={{ sm: 3, md: 3, lg: 5 }} color="#FFE7CC">
                     fill the information needed to add the course
                   </Text>
                   <Stack
                   mt='30'
                  >
-                  <Image alt ="image not found" src ={addcourse2} width={'450px'} h="45vh" m={{sm: 4}}/>
+                  <Image alt ="image not found" src ={addcourse2} width={'450px'} h="60vh" m={{sm: 4}}/>
                   </Stack>
                 </Box>
               </WrapItem>
               <WrapItem>
                 <Box bg="white" borderRadius="lg" w={'400px'} >
-                  <Box m={8} color="#805ad5" >
+                  <Box m={8} color="black" >
                     <VStack spacing={5}>
                       <FormControl isRequired>
                         <FormLabel>Full Name</FormLabel>
@@ -163,10 +163,10 @@ function AddCourse() {
                         <Button
                           loadingText="Submitting"
                           size="lg"
-                          bg={"#805ad5"}
-                          color={"white"}
+                          bg={"rgb(8, 58, 169)"}
+                          color={"#FFE7CC"}
                           _hover={{
-                            bg: "pink.600",
+                            bg: "blue.600",
                           }}
                           onClick={addCourse}
                         >
