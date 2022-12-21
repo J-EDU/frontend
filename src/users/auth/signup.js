@@ -25,7 +25,7 @@ import {
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import logo from "../../assesst/jedu.PNG";
-import img from "../../assesst/sign4.png"
+import img from "../../assesst/signup.jpg"
 
 const initialStateData = {
   fullName: "",
@@ -75,15 +75,21 @@ function Signup2() {
 
   
   return (
+    
     <HStack  h="120vh" ml="40vh">
-    <Flex w="70vh" h="110vh" borderRightWidth={1}display={{base:'none', md:'flex'}}>
-        <Image  objectFit="cover" w="full" h="full" src={img}/>
+       
+    <Flex w="70vh" h="111vh" display={{base:'none', md:'flex'}}>
+
+      <Stack>
+        <Image  objectFit="cover" w="full"  h="full" src={img} borderColor='gray.200' />
+      </Stack>
+    
     </Flex>
 
-    <Flex w="60vh" h="111vh" alignItems="center" justifyContent="cenetr" border='1px' borderColor='gray.200'>
+    <Flex w="60vh" h="100vh" alignItems="center" justifyContent="cenetr" border='1px' borderColor='white'>
         <Stack w="full" maxW="md" spacing={4} p={6} >
 
-            <Heading fontSize="2xl" color="purple.500">
+        <Heading fontSize="2xl" color="rgb(8, 58, 169)" textAlign={"center"}>
                 Join Us
             </Heading>
         
@@ -132,6 +138,8 @@ function Signup2() {
 
                          <InputRightElement>
                            <Button
+                           bg="rgb(8, 58, 169)"
+                           color="#FFE7CC"
                              variant={"ghost"}
                              onClick={() =>
                                setShowPassword((showPassword) => !showPassword)
@@ -153,7 +161,9 @@ function Signup2() {
 
                          <InputRightElement>
                            <Button
-                             variant={"ghost"}
+                           bg="rgb(8, 58, 169)"
+                           color="#FFE7CC"
+                             variant={"solid"}
                              onClick={() =>
                                setShowPassword((showPassword) => !showPassword)
                              }
@@ -173,7 +183,8 @@ function Signup2() {
                 <Link color="purble.500">Forgot password?</Link>
             </Stack> */}
 
-            <Button colorScheme="purple"  loadingText="Submitting"  onClick={signUp}>Sign Up</Button>
+            <Button bg="rgb(8, 58, 169)"
+                           color="#FFE7CC" loadingText="Submitting"  onClick={signUp}>Sign Up</Button>
         </Stack>
     </Flex>
    </HStack>

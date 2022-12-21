@@ -5,7 +5,7 @@
     
   }
   .backcolor{
-    background-color:  rgb(236, 238, 242);
+    background-color: #FEFCF3;
   }
   
   .about-section{
@@ -22,17 +22,19 @@
   .AboutUs_h1 {
     text-align: center;
     font-size: 35px;
-    color:#805ad5;
+    color:rgb(8, 58, 169);
+    font-weight: bold;
     margin-top: 20px;
   
     
   }
 
   .AboutUs_h12 {
-    margin-top: 25px;
+    margin-top: 30px;
     text-align: center;
-    font-size: 35px;
-    color:#805ad5;
+    font-size: 35px ;
+    color:rgb(8, 58, 169);
+    font-weight: bold;
     
   
     
@@ -50,14 +52,14 @@
   
     border-radius: 20px;
   
-    border-color:#805ad5;
+    border-color:#F5EBE0;
     padding: 3%;
-    background-color:#f3ebff;
+    background-color:#FEFCF3;
     display: flex;
     align-items: center;
     position:absolute;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 100px;
+    margin-bottom: 10px;
 
     
   }
@@ -66,10 +68,11 @@
     margin-left: 10%;
     width:570px;
     height: 350px;
-    margin-bottom: 20px;
+    margin-bottom:50px;
     display: flex;
     margin-right: 5px;
-    margin-top: 20px;
+    
+    
   }
   
   
@@ -146,10 +149,10 @@
     padding: 14px;
     text-align: center;
   
-    background-color:#f3ebff;
+    background-color:#FEFCF3;
     border:solid;
-    border-color:#805ad5;
-    color: #805ad5;
+    border-color:#F5EBE0;
+    color: #083AA9;
   
   
   
@@ -184,13 +187,25 @@
     font-size: 20px;
     margin-bottom: 10%;
     }
-    .row .column .card .icon .a {
+    /* .row .column .card .icon .a {
     
       font-size: 20px;
-      }
-  /* .icon:hover{
-    background-color: #a8beff;
-  } */
+      
+      } */
+   /* .icon{
+    margin-left: 120px;
+      margin-right: 5px;
+   };
+  */
+
+
+  .icon{
+    /* margin-left: 100px; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+  }
   a i {
     transition: all 0.3s linear;
 }

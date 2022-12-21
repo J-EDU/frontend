@@ -4,7 +4,8 @@ import { FaGithub } from "react-icons/fa";
 import { AiFillLinkedin } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { IconContext } from 'react-icons';
-import aboutimage from '../../assesst/aboutimage.png';
+import { FaLinkedinIn } from "react-icons/fa";
+import aboutimage from '../../assesst/aboutus.png';
 
 class AboutUs extends Component {
     render() {
@@ -39,6 +40,7 @@ class AboutUs extends Component {
                                         <div className="title">Full Stack Developer</div>
                                         <div className="icon" >
                                             <a href={item.github} className='a' target="_blank"><FaGithub /></a>
+                                            <a className="about-icon" href={item.linkedin} >< FaLinkedinIn/></a>
 
                                         </div>
 
