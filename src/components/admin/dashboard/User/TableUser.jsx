@@ -8,11 +8,17 @@ import { SearchIcon } from "@chakra-ui/icons";
 
 const { Search } = Input;
 
+const viewbtn = (item) => {
+  alert("hassan")
+}
+
+
 const fetchUsers = async () => {
   let { data } = await axios.get(`${process.env.REACT_APP_LOCAL}/user/`, {
     headers: { Authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
   });
   data = data.users;
+  
   return { data };
 };
 
@@ -21,9 +27,6 @@ const fetchUsers = async () => {
 export default function TableUser() {
   const [searchVal, setSearchVal] = useState(null);
 
-  const viewbtn = (item) => {
-    alert("hassan")
-  }
 
   const { filteredData, loading } = useTableSearch({
     searchVal,
@@ -53,7 +56,15 @@ export default function TableUser() {
             dataSource={filteredData}
             columns={userColumns}
             loading={loading}
+            viewbtn={viewbtn}
             pagination={true}
+            // onRow={(record, rowIndex) => {
+            //   return {
+            //     onClick: event => {
+                  
+            //     }
+            //   }
+            // }}
           />
         </Box>
       </Box>

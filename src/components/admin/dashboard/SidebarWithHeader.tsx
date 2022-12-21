@@ -1,4 +1,6 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
+import cookies from "react-cookies";
+
 import {
   IconButton,
   Avatar,
@@ -9,7 +11,6 @@ import {
   VStack,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -31,7 +32,7 @@ import {
   FiChevronDown,
 } from 'react-icons/fi';
 import {MdOutlineReport,MdOutlineFeedback } from "react-icons/md";
-
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 import { IconType } from 'react-icons';
 import {
   TfiAnnouncement,
@@ -39,13 +40,15 @@ import {
 } from "react-icons/tfi";
 import { Image } from '@chakra-ui/react';
 import { ReactText } from 'react';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { UserState } from './Context/UserContext';
 
 interface LinkItemProps {
   name: string;
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
+  { name: 'Home', icon: FiHome }, 
   { name: 'Users', icon: FiUsers },
   { name: 'Announcements', icon: TfiAnnouncement },
   { name: 'Reports', icon: MdOutlineReport },
@@ -53,11 +56,13 @@ const LinkItems: Array<LinkItemProps> = [
 ];
 
 export default function SidebarWithHeader({
-  children,
+  children
 }: {
   children: ReactNode;
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
       <SidebarContent
@@ -77,7 +82,7 @@ export default function SidebarWithHeader({
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
+      <MobileNav  onOpen={onOpen}   />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
@@ -118,7 +123,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {LinkItems.map((link , idx) => (
         <NavItem key={link.name} icon={link.icon}
           color={(idx === 3) ? 'red' : 'black'}
-        
+          fontFamily={`'Raleway', sans-serif`}
+          textTransform={"uppercase"}
+          onClick={() => {
+          console.log(link.name)
+          }}
         >
           {link.name}
         </NavItem>
@@ -131,9 +140,9 @@ interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <Link to={`/dashboard/${children}`}  >
       <Flex
         align="center"
         p="4"
@@ -166,6 +175,7 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -227,10 +237,18 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             <MenuList
               bg={useColorModeValue('white', 'gray.900')}
               borderColor={useColorModeValue('gray.200', 'gray.700')}>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
+              <MenuItem
+              // onClick={fireProfile()}
+              >Profile</MenuItem>
+              {/* <MenuItem>Settings</MenuItem> */}
               <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
+              <MenuItem
+              onClick={()=>{
+                cookies.remove("token")
+                cookies.remove("user")
+                window.location.href = window.location.origin + "/"  
+              }}
+              >Sign out</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

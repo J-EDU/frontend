@@ -1,0 +1,243 @@
+.AboutUs_Team_members {
+    display: inline-flex;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    
+  }
+  .backcolor{
+    background-color: #FEFCF3;
+  }
+  
+  .about-section{
+    margin: 0!important;
+    padding: 0!important;
+  }
+  
+  
+  .AboutUs_container {
+    width: 50%;
+    
+  }
+  
+  .AboutUs_h1 {
+    text-align: center;
+    font-size: 35px;
+    color:rgb(8, 58, 169);
+    font-weight: bold;
+    margin-top: 20px;
+  
+    
+  }
+
+  .AboutUs_h12 {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 35px ;
+    color:rgb(8, 58, 169);
+    font-weight: bold;
+    
+  
+    
+  }
+  
+  .AboutUs_h5 {
+    font-size: 25px;
+    text-align: center !important;
+    margin-left:50%;
+    margin-right: 10%;
+    border: solid;
+    border: 20%;
+    color: rgb(32, 32, 32);
+    box-shadow: #f3ebff;
+  
+    border-radius: 20px;
+  
+    border-color:#F5EBE0;
+    padding: 3%;
+    background-color:#FEFCF3;
+    display: flex;
+    align-items: center;
+    position:absolute;
+    margin-top: 100px;
+    margin-bottom: 10px;
+
+    
+  }
+  .image{
+    position:relative;
+    margin-left: 10%;
+    width:570px;
+    height: 350px;
+    margin-bottom:50px;
+    display: flex;
+    margin-right: 5px;
+    
+    
+  }
+  
+  
+  
+  
+  .card {
+    /* background: -moz-linear-gradient(-45deg, #ffe0e3 32%, #a7e0e5 68%);
+    background: -webkit-linear-gradient(-45deg, #ffe0e3 32%, #a7e0e5 68%);
+    background: linear-gradient(135deg, #ffe0e3 32%, #a7e0e5 68%); */
+    animation: card-ani1 2s;
+    transition-delay: 1s;
+    transition-timing-function: easeOutCirc;
+    position: relative;
+  }
+  
+  @keyframes card-ani1 {
+    0% {
+      opacity: 0;
+      transform: translateX(30px) translateY(30px);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateX(0px) translateY(0px);
+    }
+  }
+  
+  @keyframes card-ani2 {
+    0% {
+      opacity: 0;
+      transform: translateX(0px) translateY(50px);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateX(0px) translateY(0px);
+      color: #201111;
+    }
+  }
+  
+  
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+   font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+  
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 29%;
+    padding: 0 20px;
+  }
+  
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    display: table;
+    clear: both;
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 14px;
+    text-align: center;
+  
+    background-color:#FEFCF3;
+    border:solid;
+    border-color:#F5EBE0;
+    color: #083AA9;
+  
+  
+  
+  
+  
+  }
+  
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .row .column .card .img {
+    width: 50%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+  }
+  
+  .row .column .card .name {
+  font-size: 20px;
+  margin-top: 5%;
+  font-weight: bold;
+  }
+  .row .column .card .title {
+    font-size: 20px;
+    margin-bottom: 10%;
+    }
+    /* .row .column .card .icon .a {
+    
+      font-size: 20px;
+      
+      } */
+   /* .icon{
+    margin-left: 120px;
+      margin-right: 5px;
+   };
+  */
+
+
+  .icon{
+    /* margin-left: 100px; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+  }
+  a i {
+    transition: all 0.3s linear;
+}
+
+a:hover i {
+    transform: scale(1.5);
+    
+}
+
+
+
+  .row .column .card {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+  
+  }
+  
+  .row .column .card .a:link {
+    color: #000000;
+    text-decoration: none;
+
+    
+  }
+  
+  .row .column .card .a:visited {
+    color: #260b0b;
+    text-decoration: none;
+  }
+  
+  .row .column .card .a:hover {
+    color: #c0a9a9;
+    text-decoration: none;
+  }

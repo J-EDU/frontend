@@ -12,11 +12,6 @@ const Pichart: React.FC = () => {
       trigger: "item",
       formatter: "{a} <br/>{b} : {c} ({d}%)",
     },
-    // legend: {
-    //   orient: "horizontal",
-    //   left: "bottom",
-    //   data: ["Math", "History", "IT", "Arabic", "English","French"],
-    // },
     series: [
       {
         name: "Chart",
